@@ -1,0 +1,23 @@
+{
+  "vhosts": [
+    { "name": "/local" },
+    { "name": "/test" },
+    { "name": "/prod" }
+  ],
+  "users": [
+    {
+      "name": "prod_admin",
+      "password": "MINTH-123456",
+      "tags": "administrator"
+    }
+  ],
+  "permissions": [
+    {
+      "user": "prod_admin",
+      "vhost": "/prod",
+      "configure": ".*",
+      "write": ".*",
+      "read": ".*"
+    }
+  ]
+}
