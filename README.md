@@ -22,10 +22,24 @@
 ## Docker 环境安装（若没有）
 删除旧 docker 
 - sudo yum remove -y docker docker-common docker-selinux docker-engine
+
+删除残留 docker 二进制（关键）
 ```bash
-sudo yum install -y docker
-sudo systemctl enable docker
-sudo systemctl start docker
+sudo rm -f /usr/bin/docker
+sudo rm -f /usr/bin/dockerd
+```
+
+清理残留 systemd unit（非常关键）
+```bash
+sudo rm -f /usr/lib/systemd/system/docker.service
+sudo rm -f /usr/lib/systemd/system/docker.socket
+sudo rm -rf /etc/docker
+```
+
+重载 systemd：
+```bash
+sudo systemctl daemon-reload
+sudo systemctl reset-failed
 ```
 
 安装官方 Docker CE 仓库
